@@ -14,6 +14,7 @@ const connection = () => {
       }
 
       resolve(res.db("Discord").collection("servers")); // TypeError: Cannot read properties of undefined (reading 'db')
+
     });
   });
 };
