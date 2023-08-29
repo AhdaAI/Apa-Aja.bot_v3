@@ -1,12 +1,7 @@
 // import { database } from "../../handler/mongodb.mjs";
 // import { SlashCommandBuilder } from "discord.js";
 const { database } = require("../../handler/mongodb");
-const { SlashCommandBuilder } = require("discord.js");
-
-/**
- *
- * @param {import("discord.js").Interaction} interaction
- */
+const { SlashCommandBuilder, CommandInteraction } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -18,7 +13,22 @@ module.exports = {
         .setDescription("Select your role.")
         .setRequired(true)
     ),
+
+  /**
+   *
+   * @param {CommandInteraction} interaction
+   */
   async execute(interaction) {
-    interaction.reply({ ephemeral: true, content: "F U :)" });
+    const serverId = interaction.guildId;
+    const role = interaction.options.data[0].role;
+
+    // interaction.member.roles
+
+    // if (interaction.member.roles) {
+    //   interaction.member.roles.remove(role);
+    // } else {
+    //   interaction.member.roles.add(role);
+    // }
+    await interaction.reply({ ephemeral: true, content: "running..." });
   },
 };

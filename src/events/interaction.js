@@ -1,3 +1,4 @@
+const { codeBlock } = require("discord.js");
 const { registered } = require("../../registerSlash");
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
       if (!command) {
         return await interaction.reply({
           ephemeral: true,
-          content: "404 Error: Unknown command",
+          content: codeBlock("404 Error: Unknown command"),
         });
       }
 

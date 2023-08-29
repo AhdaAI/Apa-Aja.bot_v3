@@ -42,9 +42,20 @@ const registering = (token, clientID, client) => {
 
   return new Promise(async (resolve, rejects) => {
     const rest = new REST().setToken(token);
-    resolve(
-      await rest.put(Routes.applicationCommands(clientID), { body: commands })
-    );
+    const guildID = process.argv.at(2);
+
+    if (!guildID) {
+      return resolve(
+        await rest.put(Routes.applicationCommands(clientID), { body: commands })
+      );
+    } else {
+      console.log(`[!] Using guild id => ${guildID}`);
+      return resolve(
+        await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
+          body: commands,
+        })
+      );
+    }
   });
 };
 

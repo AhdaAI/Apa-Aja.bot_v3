@@ -13,8 +13,7 @@ const connection = () => {
         reject(error);
       }
 
-      console.log("[!] Successfully connected to MongoDB Database.");
-      resolve(res.db("Discord").collection("servers"));
+      resolve(res.db("Discord").collection("servers")); // TypeError: Cannot read properties of undefined (reading 'db')
     });
   });
 };

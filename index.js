@@ -9,7 +9,7 @@ const clientID = process.env.CLIENT;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 connection()
-  .then(() => console.log("connected"))
+  .then(() => console.log("[!] Successfully connected to MongoDB Database."))
   .catch((e) => console.log(`[?] ERROR!!!\n${e}`));
 
 module.exports = client;
