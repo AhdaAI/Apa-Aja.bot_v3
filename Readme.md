@@ -16,3 +16,4 @@ The goal for this project is to help admin control their server.
 
 > - [Discord.js](https://discord.js.org/)
 > - [Node.js](https://nodejs.org/en)
+> - [Mongoose](https://mongoosejs.com/docs/index.html)
