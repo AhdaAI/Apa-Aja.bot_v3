@@ -8,6 +8,10 @@ Discord bot to help admin of discord server handle role by letting member join u
 
 The goal for this project is to help admin control their server.
 
+## Progress
+
+- Adding role functionality.
+
 ## Docs
 
 > - [Discord.js](https://discord.js.org/)

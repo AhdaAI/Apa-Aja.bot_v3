@@ -21,14 +21,19 @@ module.exports = {
   async execute(interaction) {
     const serverId = interaction.guildId;
     const role = interaction.options.data[0].role;
+    let response = "";
 
-    // interaction.member.roles
+    const check = interaction.member.roles.cache.some(
+      (r) => r.name === role.name
+    );
 
-    // if (interaction.member.roles) {
-    //   interaction.member.roles.remove(role);
-    // } else {
-    //   interaction.member.roles.add(role);
-    // }
-    await interaction.reply({ ephemeral: true, content: "running..." });
+    if (!check) {
+      response = `Successfuly **adding** ${role.name}`;
+      interaction.member.roles.add(role);
+    } else {
+      response = `Successfuly **removing** ${role.name}`;
+      interaction.member.roles.remove(role);
+    }
+    await interaction.reply({ ephemeral: true, content: response });
   },
 };
