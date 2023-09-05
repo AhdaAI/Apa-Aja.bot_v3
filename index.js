@@ -1,14 +1,21 @@
 const { config } = require("dotenv");
 const { Client, GatewayIntentBits } = require("discord.js");
-const { connection } = require("./handler/mongodb");
 const { registering } = require("./registerSlash");
+const mongoose = require("mongoose");
+const { connecting } = require("./handler/database/mongoose");
 config();
 
 const token = process.env.TOKEN;
 const clientID = process.env.CLIENT;
+const mongo = process.env.MONGODB;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-connection()
+// mongoose
+//   .connect(mongo, { dbName: "Discord" })
+//   .then(() => console.log("[!] Successfully connected to MongoDB Database."))
+//   .catch((e) => console.log(`[?] ERROR!!!\n${e}`));
+
+connecting(mongo)
   .then(() => console.log("[!] Successfully connected to MongoDB Database."))
   .catch((e) => console.log(`[?] ERROR!!!\n${e}`));
 
