@@ -1,6 +1,3 @@
-// import { database } from "../../handler/mongodb.mjs";
-// import { SlashCommandBuilder } from "discord.js";
-const { database } = require("../../handler/mongodb");
 const { SlashCommandBuilder, CommandInteraction } = require("discord.js");
 
 module.exports = {
