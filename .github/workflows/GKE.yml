@@ -71,7 +71,7 @@ jobs:
             --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" \
-            --build-arg token="${{ secrets.BOT_TOKEN }}" \
+            --build-arg token="${{ secrets.DISCORD_TOKEN }}" \
             --build-arg token="${{ secrets.MONGO_TOKEN }}" \
             --build-arg token="${{ secrets.CLIENT_ID }}" \
             .
