@@ -18,12 +18,12 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GAR_LOCATION: us-central1 # TODO: update region of the Artifact Registry
-  GKE_CLUSTER: cluster-1 # TODO: update to cluster name
-  GKE_ZONE: us-central1-c # TODO: update to cluster zone
-  DEPLOYMENT_NAME: gke-apa-aja_bot # TODO: update to deployment name
-  REPOSITORY: samples # TODO: update to Artifact Registry docker repository
-  IMAGE: static-site
+  GAR_LOCATION: asia-southeast2 # TODO: update region of the Artifact Registry
+  GKE_CLUSTER: discord-bot # TODO: update to cluster name
+  GKE_ZONE: asia-southeast2 # TODO: update to cluster zone
+  DEPLOYMENT_NAME: apa-aja_bot # TODO: update to deployment name
+  REPOSITORY: apa-aja_bot # TODO: update to Artifact Registry docker repository
+  # IMAGE: static-site
 
 jobs:
   setup-build-publish-deploy:
@@ -37,22 +37,22 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: "actions/checkout@v3"
 
       # Configure Workload Identity Federation and generate an access token.
-      - id: "auth"
-        name: "Authenticate to Google Cloud"
-        uses: "google-github-actions/auth@v0"
-        with:
-          token_format: "access_token"
-          workload_identity_provider: "projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider"
-          service_account: "discord-bot-service@testing-395909.iam.gserviceaccount.com"
+      # - id: "auth"
+      #   name: "Authenticate to Google Cloud"
+      #   uses: "google-github-actions/auth@v1"
+      #   with:
+      #     token_format: "access_token"
+      #     workload_identity_provider: "projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider"
+      #     service_account: "discord-bot-service@testing-395909.iam.gserviceaccount.com"
 
       # Alternative option - authentication via credentials json
-      # - id: 'auth'
-      #   uses: 'google-github-actions/auth@v0'
-      #   with:
-      #     credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+      - id: "auth"
+        uses: "google-github-actions/auth@v1"
+        with:
+          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
 
       - name: Docker configuration
         run: |-
@@ -71,6 +71,9 @@ jobs:
             --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" \
+            --build-arg token="${{ secrets.BOT_TOKEN }}" \
+            --build-arg token="${{ secrets.MONGO_TOKEN }}" \
+            --build-arg token="${{ secrets.CLIENT_ID }}" \
             .
       # Push the Docker image to Google Artifact Registry
       - name: Publish
