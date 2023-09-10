@@ -23,7 +23,7 @@ env:
   GKE_ZONE: asia-southeast2 # TODO: update to cluster zone
   DEPLOYMENT_NAME: apa-aja_bot # TODO: update to deployment name
   REPOSITORY: apa-aja_bot # TODO: update to Artifact Registry docker repository
-  # IMAGE: static-site
+  IMAGE: discord
 
 jobs:
   setup-build-publish-deploy:
