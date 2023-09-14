@@ -1,0 +1,5 @@
+commonLabels:
+  app: discordbot
+
+resources:
+  - apa-aja_bot.yaml
