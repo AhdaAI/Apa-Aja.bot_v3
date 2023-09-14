@@ -1,34 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
-  name: apa-aja.bot
+  name: apaajabot
   labels:
     app: discordbot
+
 spec:
   selector:
     matchLabels:
       octopusexport: OctopusExport
   replicas: 1
+
   strategy:
     type: Recreate
+
   template:
     metadata:
       labels:
         app: discordbot
         octopusexport: OctopusExport
+
     spec:
       containers:
-        - name: apaaja-bot
+        - name: apaajabot
           image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              podAffinityTerm:
-                labelSelector:
-                  matchExpressions:
-                    - key: app
-                      operator: In
-                      values:
-                        - web
-                topologyKey: kubernetes.io/hostname
