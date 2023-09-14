@@ -21,7 +21,7 @@ env:
   GAR_LOCATION: asia-southeast2 # TODO: update region of the Artifact Registry
   GKE_CLUSTER: discord-bot # TODO: update to cluster name
   GKE_ZONE: asia-southeast2-a # TODO: update to cluster zone
-  DEPLOYMENT_NAME: apa-aja_bot # TODO: update to deployment name
+  DEPLOYMENT_NAME: apaajabot # TODO: update to deployment name
   REPOSITORY: apaajabot # TODO: update to Artifact Registry docker repository
   IMAGE: discord
 
