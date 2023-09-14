@@ -64,7 +64,6 @@ jobs:
         with:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GAR_LOCATION }}
-          credentials: ${{secrets.GCP_CREDENTIALS}}
 
       # Build the Docker image
       - name: Build
