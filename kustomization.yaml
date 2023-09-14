@@ -1,8 +1,7 @@
-commonLabels:
-  app: discordbot
-
 resources:
 - apaajabot.yaml
 
 images:
 - name: apaaja
+  newName: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot/discord
+  newTag: latest
