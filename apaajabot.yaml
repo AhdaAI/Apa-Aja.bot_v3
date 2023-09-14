@@ -24,28 +24,28 @@ spec:
     spec:
       containers:
       - name: "discord-sha256-1"
-        image: "asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot/discord@sha256:728d3e7d629f620d5f32383855f49c4438316f0927a4efc0318523e082cd301c"
+        image: "asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot/discord"
 
 
-# ---
-# apiVersion: "autoscaling/v2"
-# kind: "HorizontalPodAutoscaler"
-# metadata:
-#   name: "apaajabot-deployment-hpa-x7nm"
-#   namespace: "default"
-#   labels:
-#     app: "apaajabot-deployment"
-# spec:
-#   scaleTargetRef:
-#     kind: "Deployment"
-#     name: "apaajabot-deployment"
-#     apiVersion: "apps/v1"
-#   minReplicas: 1
-#   maxReplicas: 2
-#   metrics:
-#   - type: "Resource"
-#     resource:
-#       name: "cpu"
-#       target:
-#         type: "Utilization"
-#         averageUtilization: 80
+---
+apiVersion: "autoscaling/v2"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "apaajabot-deployment-hpa-x7nm"
+  namespace: "default"
+  labels:
+    app: "apaajabot-deployment"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "apaajabot-deployment"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      target:
+        type: "Utilization"
+        averageUtilization: 80
