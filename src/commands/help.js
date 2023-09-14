@@ -22,7 +22,7 @@ module.exports = {
     fields.push({
       name: "Role Selections",
       value: codeBlock(
-        "Put the bot's role on top of the desired role to add. Remember to never put the role of this bot on top of admin role."
+        "Put the bot's role on top of the desired role to add. Remember to never put the role of this bot on top of admin role. [docs](https://support.discord.com/hc/en-us/articles/214836687-Role-Management-101)"
       ),
       inline: true,
     });
