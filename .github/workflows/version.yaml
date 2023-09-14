@@ -1,8 +1,6 @@
 on:
   push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+    branches: [main]
 
 name: Upload Release Asset
 
@@ -10,9 +8,15 @@ jobs:
   build:
     name: Upload Release Asset
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ${{github.ref_name == 'v3.*'}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Check version
+        run: echo ${{matrix.version}}
 
       - name: Build project
         run: |
