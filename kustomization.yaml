@@ -2,4 +2,7 @@ commonLabels:
   app: discordbot
 
 resources:
-  - apaajabot.yaml
+- apaajabot.yaml
+
+images:
+- name: apaaja
