@@ -1,17 +1,49 @@
-apiVersion: apps/v1
+# apiVersion: apps/v1
+# kind: Deployment
+
+# metadata:
+#   name: apaajabot
+#   labels:
+#     app: discordbot
+#     description: "Discord bot named Apa-Aja.bot"
+#     version: "3.0.0"
+#     environment: production
+
+# spec:
+#   selector:
+#     matchLabels:
+#       app: discordbot
+#   replicas: 1
+
+#   strategy:
+#     type: Recreate
+
+#   template:
+#     metadata:
+#       labels:
+#         app: discordbot
+
+#     spec:
+#       containers:
+#       - name: apaajabot
+#         image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot
+
+
+apiVersion: apps/v3
 kind: Deployment
 
 metadata:
-  name: apaajabot
+  name: apaajabot-deployment
   labels:
     app: discordbot
+    description: "Apa-Aja.bot"
     version: "3.0.0"
-    environment: production
 
 spec:
   selector:
     matchLabels:
-      app: discordbot
+      app: apaajabot
+
   replicas: 1
 
   strategy:
@@ -20,9 +52,8 @@ spec:
   template:
     metadata:
       labels:
-        app: discordbot
-
+        app: apaajabot
     spec:
       containers:
-        - name: apaajabot
-          image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot
+      - name: apaajabot
+        image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot
