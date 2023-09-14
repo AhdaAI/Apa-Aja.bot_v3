@@ -1,6 +1,7 @@
 on:
   push:
-    branches: [main, v3.0.1]
+    tags:
+      - "v*"
 
 name: Upload Release Asset
 
@@ -14,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Check version
-        run: echo ${{github.head_ref}}
+        run: echo $GITHUB_REF_NAME
 
       - name: Create Release
         id: create_release
