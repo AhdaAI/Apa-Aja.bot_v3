@@ -1,59 +1,51 @@
-# apiVersion: apps/v1
-# kind: Deployment
-
-# metadata:
-#   name: apaajabot
-#   labels:
-#     app: discordbot
-#     description: "Discord bot named Apa-Aja.bot"
-#     version: "3.0.0"
-#     environment: production
-
-# spec:
-#   selector:
-#     matchLabels:
-#       app: discordbot
-#   replicas: 1
-
-#   strategy:
-#     type: Recreate
-
-#   template:
-#     metadata:
-#       labels:
-#         app: discordbot
-
-#     spec:
-#       containers:
-#       - name: apaajabot
-#         image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot
-
-
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: "apps/v1"
+kind: "Deployment"
 
 metadata:
-  name: apaajabot-deployment
+  name: "apaajabot-deployment"
   labels:
-    app: discordbot
-    description: "Apa-Aja.bot"
-    version: "3.0.0"
+    app: "apaajabot-deployment"
 
 spec:
-  selector:
-    matchLabels:
-      app: apaajabot
-
   replicas: 1
 
   strategy:
     type: Recreate
 
+  selector:
+    matchLabels:
+      app: "apaajabot-deployment"
+
   template:
     metadata:
       labels:
-        app: apaajabot
+        app: "apaajabot-deployment"
+
     spec:
       containers:
-      - name: apaajabot
-        image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot
+      - name: "discord-sha256-1"
+        image: "asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot/discord@sha256:728d3e7d629f620d5f32383855f49c4438316f0927a4efc0318523e082cd301c"
+
+
+# ---
+# apiVersion: "autoscaling/v2"
+# kind: "HorizontalPodAutoscaler"
+# metadata:
+#   name: "apaajabot-deployment-hpa-x7nm"
+#   namespace: "default"
+#   labels:
+#     app: "apaajabot-deployment"
+# spec:
+#   scaleTargetRef:
+#     kind: "Deployment"
+#     name: "apaajabot-deployment"
+#     apiVersion: "apps/v1"
+#   minReplicas: 1
+#   maxReplicas: 2
+#   metrics:
+#   - type: "Resource"
+#     resource:
+#       name: "cpu"
+#       target:
+#         type: "Utilization"
+#         averageUtilization: 80
