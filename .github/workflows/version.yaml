@@ -8,15 +8,13 @@ jobs:
   build:
     name: Upload Release Asset
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: ${{github.ref_name}}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Check version
-        run: echo ${{matrix.version}}
+        run: echo ${{github.ref_name}}
 
       - name: Build project
         run: |
