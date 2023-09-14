@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: apaaja
-        image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot/discord
+        image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot/discord:latest
 
 
 # apiVersion: v1
