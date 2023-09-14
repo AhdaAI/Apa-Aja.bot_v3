@@ -5,11 +5,13 @@ metadata:
   name: apaajabot
   labels:
     app: discordbot
+    version: "3.0.0"
+    environment: production
 
 spec:
   selector:
     matchLabels:
-      octopusexport: OctopusExport
+      app: discordbot
   replicas: 1
 
   strategy:
@@ -19,7 +21,6 @@ spec:
     metadata:
       labels:
         app: discordbot
-        octopusexport: OctopusExport
 
     spec:
       containers:
