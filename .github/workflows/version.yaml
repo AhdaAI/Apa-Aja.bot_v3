@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [main]
+    branches: [v3.0.1]
 
 name: Upload Release Asset
 
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ${{github.ref_name == 'v3.*'}}
+        version: ${{github.ref_name}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
