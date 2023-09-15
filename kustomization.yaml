@@ -1,6 +1,0 @@
-resources:
-- apaajabot.yaml
-
-images:
-- name: apaaja
-  newName: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
