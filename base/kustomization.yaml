@@ -1,2 +1,5 @@
 resources:
 - ./apaajabot.yaml
+
+images:
+- name: apaaja
