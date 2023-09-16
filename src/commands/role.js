@@ -20,6 +20,10 @@ module.exports = {
     const role = interaction.options.data[0].role;
     let response = "";
 
+    if (interaction.member.permissions.has(role)) {
+      console.log("true");
+    }
+
     const check = interaction.member.roles.cache.some(
       (r) => r.name === role.name
     );
