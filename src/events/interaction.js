@@ -1,4 +1,4 @@
-const { codeBlock } = require("discord.js");
+const { codeBlock, CommandInteraction } = require("discord.js");
 const { registered } = require("../../registerSlash");
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
   once: false,
   /**
    *
-   * @param {import("discord.js").Interaction} interaction
+   * @param {CommandInteraction} interaction
    */
   async execute(interaction) {
     if (interaction.isChatInputCommand()) {
@@ -25,13 +25,12 @@ module.exports = {
         await command.execute(interaction);
       } catch (e) {
         console.log(e);
-        if (interaction.replied()) {
-          return interaction.editReply({
+        if (interaction.isRepliable()) {
+          return interaction.reply({
             content: "An error has occured. Please contact admin.",
           });
         } else {
-          return interaction.reply({
-            ephemeral: true,
+          return interaction.editReply({
             content: "An error has occured. Please contact admin.",
           });
         }

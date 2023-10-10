@@ -20,8 +20,6 @@ const eventFiles = readdirSync(`${source}/events`).filter((file) =>
 );
 
 const registering = (token, clientID, client) => {
-  console.log("\n\t|=====|");
-
   slashFiles.forEach((file) => {
     console.log(`[*] Registering ${file}...`);
     const fileDatas = require(`${source}/commands/${file}`);
@@ -29,16 +27,16 @@ const registering = (token, clientID, client) => {
     registered.set(fileDatas.data.name, fileDatas);
   });
 
-  eventFiles.forEach((file) => {
-    const datas = require(`${source}/events/${file}`);
-    if (datas.once) {
-      console.log(`[*] Registering once.`);
-      client.once(datas.name, async (...args) => datas.execute(...args));
-    } else {
-      console.log(`[*] Registering ${file}.`);
-      client.on(datas.name, async (...args) => datas.execute(...args));
-    }
-  });
+  // eventFiles.forEach((file) => {
+  //   const datas = require(`${source}/events/${file}`);
+  //   if (datas.once) {
+  //     console.log(`[*] Registering once.`);
+  //     client.once(datas.name, async (...args) => datas.execute(...args));
+  //   } else {
+  //     console.log(`[*] Registering ${file}.`);
+  //     client.on(datas.name, async (...args) => datas.execute(...args));
+  //   }
+  // });
 
   return new Promise(async (resolve, rejects) => {
     const rest = new REST().setToken(token);

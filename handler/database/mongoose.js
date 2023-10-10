@@ -1,7 +1,7 @@
-const { Schema, model, connect, connection } = require("mongoose");
+const { model, connect, connection, default: mongoose } = require("mongoose");
 
-const schematic = new Schema({
-  id: Number,
+const schematic = new mongoose.Schema({
+  guild: String,
   GSHword: [String],
   settings: [
     {
@@ -11,6 +11,18 @@ const schematic = new Schema({
     },
   ],
   customs: {
+    channels: [
+      {
+        name: String,
+        id: String,
+      },
+    ],
+    roles: [
+      {
+        name: String,
+        id: String,
+      },
+    ],
     embeds: [
       {
         name: String,
@@ -33,5 +45,4 @@ const connecting = async (mongodbURL) => {
   });
 };
 
-module.exports = model("servers", schematic);
-module.exports = { connecting };
+module.exports = { database: model("server", schematic), connecting };
