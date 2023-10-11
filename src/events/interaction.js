@@ -35,6 +35,21 @@ module.exports = {
           });
         }
       }
+    } else if (interaction.isStringSelectMenu()) {
+      const { customId, member, values, guildId } = interaction;
+      switch (customId) {
+        case "role":
+          const role = await interaction.guild.roles.fetch(values[0]);
+          member.roles.cache.some((r) => r.name === role.name)
+            ? member.roles.remove(role)
+            : member.roles.add(role);
+
+          interaction.update({ content: " " });
+          break;
+
+        default:
+          break;
+      }
     }
   },
 };
