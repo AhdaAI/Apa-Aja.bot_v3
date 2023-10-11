@@ -55,6 +55,14 @@ module.exports = {
 
           break;
         } else {
+          if (data.customs.roles.length < 1) {
+            await interaction.reply({
+              content: "Please use `/role mode:auto`",
+              ephemeral: true,
+            });
+
+            break;
+          }
           const options = data.customs.roles.map((rl) =>
             new StringSelectMenuOptionBuilder()
               .setLabel(rl.name)
