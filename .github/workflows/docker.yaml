@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: user/apa-aja.bot:latest
+          tags: ahda043/apa-aja.bot:latest
