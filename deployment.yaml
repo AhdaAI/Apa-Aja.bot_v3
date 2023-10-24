@@ -17,3 +17,6 @@ spec:
       containers:
       - name: apaaja
         image: ahda043/apa-aja.bot
+        envFrom:
+        - configMapRef:
+            name: apa-ajabot.configmap
