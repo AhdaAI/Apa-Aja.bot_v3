@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apaaja-deployment
+  labels:
+    app: apaaja
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apaaja
+  template:
+    metadata:
+      labels:
+        app: apaaja
+    spec:
+      containers:
+      - name: apaaja
+        image: ahda043/apa-aja.bot
