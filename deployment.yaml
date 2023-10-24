@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: apaaja
-        image: asia-southeast2-docker.pkg.dev/discord-bot-398115/apaajabot/discord
+        image: ahda043/apa-aja.bot
