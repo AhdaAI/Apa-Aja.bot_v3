@@ -1,3 +1,4 @@
+[![GKE](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/GKE.yaml/badge.svg)](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/GKE.yaml)
 # Apa-Aja.bot
 
 > Version 3.0.0
