@@ -7,7 +7,6 @@ on:
 env:
   project_id: ${{secrets.GKE_PROJECT}}
   GKE_CLUSTER: apa-ajabot # Add your cluster name here.
-  GKE_ZONE: asia-southeast2-a # Add your cluster zone here.
 
 jobs:
   Kubernetes:
@@ -28,7 +27,7 @@ jobs:
         uses: google-github-actions/get-gke-credentials@v1
         with:
           cluster_name: GKE_CLUSTER
-          location: GKE_ZONE
+          location: asia-southeast2-a
 
       - name: Deploy
         run: kubectl apply -f deployment.yaml
