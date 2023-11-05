@@ -1,8 +1,8 @@
-const { codeBlock, CommandInteraction } = require("discord.js");
+const { codeBlock, CommandInteraction, Events } = require("discord.js");
 const { registered } = require("../../registerSlash");
 
 module.exports = {
-  name: "interactionCreate",
+  name: Events.InteractionCreate,
   once: false,
   /**
    *

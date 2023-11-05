@@ -16,7 +16,7 @@ console.log("\n\t|=====|");
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
   presence: {
-    activities: [{ name: "/", type: ActivityType.Listening }],
+    activities: [{ name: "With Your Sibling...", type: ActivityType.Playing }],
   },
 });
 // mongoose

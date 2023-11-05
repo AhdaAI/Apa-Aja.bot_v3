@@ -1,6 +1,5 @@
 # Apa-Aja.bot
 
-[![GKE](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/GKE.yaml/badge.svg?branch=main&event=push)](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/GKE.yaml)
 [![Docker build and push](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/docker.yaml/badge.svg?branch=main&event=push)](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/docker.yaml)
 
 > Version 3.0.0

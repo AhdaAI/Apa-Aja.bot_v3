@@ -10,10 +10,14 @@ module.exports = {
    */
   async execute(member) {
     const server = member.guild;
-    const data = await database.findOne({ id: server.id }).exec();
+    const data = await database.findOne({ guild: server.id }).exec();
+
+    const channel = member.guild.channels.fetch(
+      data.customs.channels.filter((ch) => ch.name === "welcome").id
+    );
 
     console.log(data);
 
-    return member.send({ content: "hi" });
+    return channel.send({ content: "hi" });
   },
 };
