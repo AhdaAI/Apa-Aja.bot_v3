@@ -96,13 +96,31 @@ module.exports = {
         break;
 
       case "set":
-        if (!channel && role) {
-          data.customs.roles.push({ name: role.name, id: role.id });
-        } else if (!role && channel) {
-          data.customs.channels.push({ name: channel.name, id: channel.id });
-        } else {
-          data.customs.channels.push({ name: channel.name, id: channel.id });
-          data.customs.roles.push({ name: role.name, id: role.id });
+        const check = {
+          role: true,
+          channel: true,
+        };
+        if (role) {
+          check.role = data.customs.roles.some((dat) => dat.name === role.name);
+        }
+        if (channel) {
+          check.channel = data.customs.channels.some(
+            (dat) => dat.name === channel.name
+          );
+        }
+
+        if (!check.role) {
+          data.customs.roles.push({
+            name: role.name,
+            id: role.id,
+          });
+        }
+
+        if (!check.channel) {
+          data.customs.channels.push({
+            name: channel.name,
+            id: channel.id,
+          });
         }
 
         data.save();

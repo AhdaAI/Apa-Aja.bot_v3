@@ -33,7 +33,8 @@ const schematic = new mongoose.Schema({
   },
 });
 
-const connecting = async (mongodbURL) => {
+const connecting = async () => {
+  const mongodbURL = process.env.MONGODB;
   await connect(mongodbURL, { dbName: "Discord" });
 
   return new Promise((resolve, reject) => {

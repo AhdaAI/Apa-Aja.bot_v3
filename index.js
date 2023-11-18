@@ -1,15 +1,10 @@
 const { config } = require("dotenv");
 const { Client, GatewayIntentBits, ActivityType, REST } = require("discord.js");
-const { registering } = require("./registerSlash");
-const mongoose = require("mongoose");
-const { connecting } = require("./handler/database/mongoose");
 const { readdirSync } = require("fs");
 const { join } = require("path");
 config();
 
 const token = process.env.TOKEN;
-const clientID = process.env.CLIENT;
-const mongo = process.env.MONGODB;
 
 const rest = new REST().setToken(token);
 
