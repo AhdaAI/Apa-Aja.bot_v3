@@ -1,22 +1,19 @@
 const { config } = require("dotenv");
-const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
-const { registering } = require("./registerSlash");
-const mongoose = require("mongoose");
-const { connecting } = require("./handler/database/mongoose");
+const { Client, GatewayIntentBits, ActivityType, REST } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
 config();
 
 const token = process.env.TOKEN;
-const clientID = process.env.CLIENT;
-const mongo = process.env.MONGODB;
+
+const rest = new REST().setToken(token);
 
 console.log("\n\t|=====|");
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
   presence: {
-    activities: [{ name: "/", type: ActivityType.Listening }],
+    activities: [{ name: "With Your Sibling...", type: ActivityType.Playing }],
   },
 });
 // mongoose
@@ -24,15 +21,15 @@ const client = new Client({
 //   .then(() => console.log("[!] Successfully connected to MongoDB Database."))
 //   .catch((e) => console.log(`[?] ERROR!!!\n${e}`));
 
-connecting(mongo)
-  .then(() => console.log("[!] Successfully connected to MongoDB Database."))
-  .catch((e) => console.log(`[?] ERROR!!!\n${e}`));
+// connecting(mongo)
+//   .then(() => console.log("[!] Successfully connected to MongoDB Database."))
+//   .catch((e) => console.log(`[?] ERROR!!!\n${e}`));
 
-module.exports = client;
+module.exports = rest;
 
 readdirSync(`${join(__dirname, "/src")}/events`).filter((file) => {
   if (file.endsWith(".js")) {
-    console.log(`[*] Getting event => ${file}`);
+    console.log(`[ Events ] Getting event => ${file}`);
     const event = require(`${join(__dirname, "/src")}/events/${file}`);
 
     if (event.once) {
@@ -43,7 +40,4 @@ readdirSync(`${join(__dirname, "/src")}/events`).filter((file) => {
   }
 });
 
-client.login(token).then(() => {
-  console.log("[!] Connected to Discord Bot.");
-});
-registering(token, clientID, client);
+client.login(token);

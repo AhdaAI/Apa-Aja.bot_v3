@@ -1,5 +1,6 @@
-[![GKE](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/docker.yaml/badge.svg)](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/GKE.yaml)
 # Apa-Aja.bot
+
+[![Docker build and push](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/docker.yaml/badge.svg?branch=main&event=push)](https://github.com/RazorHex/Apa-Aja.bot_v3/actions/workflows/docker.yaml)
 
 > Version 3.0.0
 
@@ -18,4 +19,17 @@ The goal for this project is to help admin control their server.
 > - [Discord.js](https://discord.js.org/)
 > - [Node.js](https://nodejs.org/en)
 > - [Mongoose](https://mongoosejs.com/docs/index.html)
-> - [Kustomization](https://github.com/kubernetes-sigs/kustomize#usage)
+
+## Docker
+
+You can use docker to run this bot for local use.
+
+URL = `ahda043/apa-aja.bot@latest`
+
+**Required environment variable**
+
+```yaml
+MONGODB: mongo_uri
+TOKEN: discord_bot_application_token
+CLIENT: discord_bot_application_client_token
+```
